@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<!-- Portfólio Levi Santos · player via Vimeo -->
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="description" content="Levi Santos — Editor de Vídeo. Portfólio de edição de Shorts e vídeos.">
+<title>Levi Santos · Editor de Vídeo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0f0f0f;--surface:#161618;--surface-2:#1c1c20;
+    --border:rgba(255,255,255,.08);--text:#f5f5f6;--muted:#9a9aa3;
+    --accent:#8b5cf6;--accent-light:#a78bfa;--accent-glow:rgba(139,92,246,.35);--radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 20px}
+
+  /* HERO */
+  header{position:relative;text-align:center;padding:90px 20px 70px;overflow:hidden}
+  header::before{content:"";position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:700px;height:700px;max-width:120vw;background:radial-gradient(circle,var(--accent-glow) 0%,transparent 65%);filter:blur(10px);opacity:.6;pointer-events:none}
+  .badge{position:relative;display:inline-flex;align-items:center;gap:8px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-light);border:1px solid var(--border);background:rgba(139,92,246,.08);padding:7px 16px;border-radius:999px;margin-bottom:26px}
+  .badge .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+  header h1{position:relative;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(2.6rem,9vw,5rem);line-height:1.02;letter-spacing:-.02em;margin-bottom:14px}
+  header h1 .accent{background:linear-gradient(120deg,var(--accent-light),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .role{position:relative;font-size:clamp(1rem,3.5vw,1.3rem);color:var(--muted);margin-bottom:10px}
+  .stat{position:relative;font-size:clamp(.95rem,3vw,1.15rem);color:var(--muted);margin-bottom:34px}
+  .stat strong{color:var(--accent-light);font-weight:600}
+  .cta{position:relative;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;font-weight:600;font-size:.98rem;transition:transform .2s ease,box-shadow .2s ease,background .2s ease,border-color .2s ease}
+  .btn svg{width:19px;height:19px}
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 8px 30px -8px var(--accent-glow)}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 40px -8px var(--accent-glow)}
+  .btn-ghost{border:1px solid var(--border);background:var(--surface);color:var(--text)}
+  .btn-ghost:hover{transform:translateY(-3px);border-color:var(--accent-light);background:var(--surface-2)}
+
+  /* SECTIONS */
+  section{padding:40px 0}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:28px}
+  .sec-head .kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-light);font-weight:600}
+  .sec-head h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.4rem,4vw,2rem);font-weight:600;letter-spacing:-.01em}
+  .sec-head .line{flex:1;height:1px;background:var(--border)}
+
+  /* VIDEO CARDS */
+  .video{position:relative;width:100%;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+  .video.vertical{aspect-ratio:9/16}
+  .video.horizontal{aspect-ratio:16/9}
+  .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .thumb{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;cursor:pointer;background:linear-gradient(135deg,#1c1c20,#121214);display:block;overflow:hidden}
+  .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease,opacity .3s ease;opacity:.92}
+  .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55),transparent 55%)}
+  .thumb:hover img{transform:scale(1.06);opacity:1}
+  .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;width:62px;height:62px;border-radius:50%;background:rgba(139,92,246,.92);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 28px -4px var(--accent-glow);transition:transform .2s ease,background .2s ease}
+  .thumb:hover .play{transform:translate(-50%,-50%) scale(1.1);background:var(--accent)}
+  .play svg{width:24px;height:24px;margin-left:3px;fill:#fff}
+
+  /* GRIDS */
+  .featured-grid{display:grid;grid-template-columns:1fr;gap:20px;max-width:940px;margin:0 auto}
+  .featured-grid .video{box-shadow:0 30px 70px -30px rgba(0,0,0,.9)}
+  @media(min-width:820px){.featured-grid.multi{grid-template-columns:repeat(2,1fr)}}
+  .shorts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:18px}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--border);margin-top:40px;padding:48px 20px;text-align:center}
+  footer .name{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:600;margin-bottom:6px}
+  footer .contacts{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin:18px 0;color:var(--muted);font-size:.95rem}
+  footer .contacts a{display:inline-flex;align-items:center;gap:8px;transition:color .2s}
+  footer .contacts a:hover{color:var(--accent-light)}
+  footer .contacts svg{width:17px;height:17px;fill:var(--accent-light)}
+  footer small{color:#5d5d66;font-size:.8rem}
+
+  @media (max-width:560px){
+    .shorts-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+    header{padding:70px 18px 50px}
+    .btn{flex:1;justify-content:center}
+  }
+</style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header>
+    <span class="badge"><span class="dot"></span>Portfólio · Edição de Vídeo</span>
+    <h1>Levi <span class="accent">Santos</span></h1>
+    <p class="role">Editor de Vídeo</p>
+    <p class="stat">Mais de <strong>900 vídeos editados</strong></p>
+    <div class="cta">
+      <a class="btn btn-primary" id="wpp-hero" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.5 5.209l-.999 3.648 3.738-.98zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.074-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        WhatsApp
+      </a>
+      <a class="btn btn-ghost" href="mailto:wdlevi77@gmail.com">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        E-mail
+      </a>
+    </div>
+  </header>
+
+  <!-- VÍDEO HORIZONTAL (16:9) — topo -->
+  <section id="featured" class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Destaque</span>
+      <h2>Vídeo horizontal</h2>
+      <span class="line"></span>
+    </div>
+    <div id="featured-grid" class="featured-grid"></div>
+  </section>
+
+  <!-- SHORTS (9:16) -->
+  <section class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Shorts</span>
+      <span class="line"></span>
+    </div>
+    <div id="shorts-grid" class="shorts-grid"></div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="name">Levi Santos</div>
+    <p style="color:var(--muted)">Editor de Vídeo</p>
+    <div class="contacts">
+      <a id="wpp-footer" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.5 5.209l-.999 3.648 3.738-.98z"/></svg>
+        (75) 9934-7901
+      </a>
+      <a href="mailto:wdlevi77@gmail.com">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        wdlevi77@gmail.com
+      </a>
+    </div>
+    <small>© 2026 Levi Santos · Todos os direitos reservados</small>
+  </footer>
+
+<script>
+  /* ============================================================
+     CONFIGURAÇÃO — edite só aqui.
+     vertical:true  = Short (9:16)   |   vertical:false = horizontal (16:9)
+     No Vimeo, cada vídeo precisa permitir INCORPORAÇÃO (embed):
+     Vídeo → Configurações → Privacidade → "Onde pode ser incorporado?" = Qualquer lugar.
+  ============================================================ */
+  const WHATSAPP = "557599347901"; // 55 + DDD 75 + número (confira se tem 9 dígitos)
+
+  const VIDEOS = [
+    { id:"1239252720", nome:"Vídeo horizontal",  vertical:false },
+    { id:"1239253000", nome:"Edição 1", vertical:true },
+    { id:"1239252802", nome:"Edição 2", vertical:true },
+    { id:"1239252711", nome:"Edição 3", vertical:true },
+    { id:"1239252614", nome:"Edição 4", vertical:true },
+    { id:"1239252611", nome:"Edição 5", vertical:true },
+    { id:"1239252615", nome:"Edição 6", vertical:true },
+    { id:"1239252612", nome:"Edição 7", vertical:true }
+  ];
+
+  const PLAY = '<span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>';
+
+  /* Card: mostra a miniatura do Vimeo e só carrega o player ao clicar (mais leve) */
+  function makeVideo(v){
+    const box = document.createElement('div');
+    box.className = 'video ' + (v.vertical ? 'vertical' : 'horizontal');
+    box.innerHTML =
+      '<button class="thumb" type="button" aria-label="Reproduzir ' + v.nome + '">' +
+      '<img loading="lazy" alt="" onerror="this.style.display=\'none\'" ' +
+      'src="https://vumbnail.com/' + v.id + '.jpg">' +
+      PLAY + '</button>';
+    box.querySelector('.thumb').addEventListener('click', function(){
+      box.innerHTML =
+        '<iframe src="https://player.vimeo.com/video/' + v.id +
+        '?autoplay=1&title=0&byline=0&portrait=0&dnt=1" ' +
+        'title="' + v.nome + '" loading="lazy" ' +
+        'allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
+    });
+    return box;
+  }
+
+  /* Monta as seções */
+  const horiz = VIDEOS.filter(function(v){return !v.vertical});
+  const vert  = VIDEOS.filter(function(v){return v.vertical});
+
+  const fg = document.getElementById('featured-grid');
+  if(horiz.length > 1) fg.classList.add('multi');
+  horiz.forEach(function(v){ fg.appendChild(makeVideo(v)); });
+  if(horiz.length === 0) document.getElementById('featured').style.display = 'none';
+
+  const grid = document.getElementById('shorts-grid');
+  vert.forEach(function(v){ grid.appendChild(makeVideo(v)); });
+
+  /* WhatsApp */
+  const wpp = 'https://wa.me/' + WHATSAPP + '?text=' +
+    encodeURIComponent('Olá Levi! Vi seu portfólio e gostaria de falar sobre edição de vídeo.');
+  document.getElementById('wpp-hero').href = wpp;
+  document.getElementById('wpp-footer').href = wpp;
+</script>
+</body>
+</html>
